@@ -79,7 +79,7 @@ router.post("/signup", async (req, res) => {
       });
   
       // this is sent to the user via mail to activate the account
-      const link = `https://url-shortener-backend-ab7t.onrender.com/user/account-activate/${user._id}/${token1}`;
+      const link = `https://url-shortener-jgbq.onrender.com/user/account-activate/${user._id}/${token1}`;
   
       // Tho send the activation link to the user from the host
       var transporter = nodemailer.createTransport({
@@ -170,7 +170,7 @@ router.post("/forgot-password", async (req, res) => {
       });
   
       // password reset link to be sent to the user via email
-      const link = `https://password-reset-9wl5.onrender.com/user/reset-password/${user._id}/${token}`;
+      const link = `https://url-shortener-jgbq.onrender.com/user/reset-password/${user._id}/${token}`;
   
       // to send the reset email to the user from the host
       var transporter = nodemailer.createTransport({
