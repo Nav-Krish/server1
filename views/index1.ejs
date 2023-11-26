@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // This is to redirect to login page once the user enter the new password and click submit.
+      var state = '<%- JSON.stringify(status) %>';
+      console.log(state);
+      if (JSON.parse(state) == "verified") {
+        // It redirects to login page with the confirm message
+        if (confirm("Account is Activated, Continue to Login?")) {
+          window.location.href = "https://url-shortener-frontend-task.netlify.app/";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container d-flex flex-column align-items-center mx-auto mt-5">
+      <h1 class="mt-5"><%= email %></h1>
+      <br />
+      <form class="mt-5 d-flex flex-column mx-auto gap-4 w-50" action="" method="post">
+        <input
+          class="btn btn-primary"
+          type="submit"
+          value="Activate the Account"
+        />
+      </form>
+    </div>
+  </body>
+</html>
