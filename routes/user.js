@@ -16,13 +16,6 @@ const app = express();
 const router = express.Router();
 dotenv.config();
 
-// var ejs = require("ejs");
-
-// // Ejs
-// app.set("view engine", "ejs");
-// app.use(expressLayouts);
-
-
 // login - already existing users
 router.post("/login", async (req, res) => {
   try {
@@ -230,8 +223,8 @@ router.post("/forgot-password", async (req, res) => {
   router.post("/reset-password/:id/:token", async (req, res) => {
     const { id, token } = req.params;
     const { password } = req.body;
-    // checking whether the new password and confirm password is same
-    // check user is exits
+    // To check whether the new password and confirm passwords are same
+    // To check whether the user  already exists in db or not
     const user = await User.findOne({ _id: id });
     if (!user) {
       return res.status(404).json({ error: "User does not exists." });
@@ -242,7 +235,7 @@ router.post("/forgot-password", async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
       await User.updateOne({ _id: id }, { $set: { password: hashedPassword } });
-      // res.json({ status: "Password Updated" });
+
       // This load the html file where the form is displayed to enter new password
       res.render("./index.ejs", { email: verify.email, status: "verified" });
     } catch (error) {

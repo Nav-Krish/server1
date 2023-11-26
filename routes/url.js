@@ -6,12 +6,6 @@ const expressLayouts = require('express-ejs-layouts');
 const router = express.Router();
 const app = express()
 
-// var ejs = require('ejs');
-
-// // Ejs 
-// app.set('view engine', 'ejs')
-// app.use(expressLayouts);
-
 router.get("/", async (req, res) => {
   const shortUrls = await ShortURL.find();
   res.render("./url.ejs", { shortUrls: shortUrls });
@@ -19,9 +13,6 @@ router.get("/", async (req, res) => {
 
 router.post("/shortUrls", async (req, res) => {
   await ShortURL.create({ full: req.body.fullUrl });
-  // const url = await new ShortURL({full: req.body.fullUrl})
-  
-
   res.redirect("/");
 });
 
