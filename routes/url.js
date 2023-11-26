@@ -1,4 +1,4 @@
-const ShortURL = require("../models/urlModel.js");
+const { ShortURL } = require('../models/urlModel')
 const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
 
@@ -19,6 +19,8 @@ router.get("/", async (req, res) => {
 
 router.post("/shortUrls", async (req, res) => {
   await ShortURL.create({ full: req.body.fullUrl });
+  // const url = await new ShortURL({full: req.body.fullUrl})
+  
 
   res.redirect("/");
 });

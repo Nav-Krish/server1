@@ -11,6 +11,7 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const expressLayouts = require("express-ejs-layouts");
 
+
 const app = express();
 const router = express.Router();
 dotenv.config();
@@ -20,6 +21,7 @@ dotenv.config();
 // // Ejs
 // app.set("view engine", "ejs");
 // app.use(expressLayouts);
+
 
 // login - already existing users
 router.post("/login", async (req, res) => {
@@ -248,6 +250,12 @@ router.post("/forgot-password", async (req, res) => {
       console.log(error);
     }
   });
+
+  //home
+router.get("/", async(req, res) => {
+  const ans= await getAll()
+  res.send(ans)
+});
 
   
 module.exports = router
